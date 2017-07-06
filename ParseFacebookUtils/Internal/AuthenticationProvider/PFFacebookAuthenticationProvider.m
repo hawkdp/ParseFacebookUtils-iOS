@@ -67,8 +67,8 @@ NSString *const PFFacebookUserAuthenticationType = @"facebook";
 
     FBSDKAccessToken *currentToken = [FBSDKAccessToken currentAccessToken];
     // Do not reset the current token if we have the same token already set.
-    if (![currentToken.userID isEqualToString:token.userID] ||
-        ![currentToken.tokenString isEqualToString:token.tokenString]) {
+    if ([currentToken.userID isEqualToString:token.userID] &&
+        [currentToken.tokenString isEqualToString:token.tokenString]) {
         [FBSDKAccessToken setCurrentAccessToken:token];
     }
 
